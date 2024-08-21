@@ -12,24 +12,24 @@ class AuthService {
         required String name}) async {
       String res = "Some error Occurred";
       try {
-        // for register user in firebase auth with email and pass
-        UserCredential credential = await _auth.createUserWithEmailAndPassword(
+        if(email.isNotEmpty || password.isNotEmpty || name.isNotEmpty){
+                  // for register user in firebase auth with email and pass
+          UserCredential credential = await _auth.createUserWithEmailAndPassword(
           email: email,
           password: password,
         );
-
         await _firestore.collection("users").doc(credential.user!.uid).set({
           "name": name,
           "email": email,
           "uid": credential.user!.uid,
         });
         res = "Success";
+        }
       } catch (err) {
         return err.toString();
       }
       return res;
     }
-  
    // logIn user
   Future<String> loginUser({
     required String email,
