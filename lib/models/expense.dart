@@ -1,18 +1,16 @@
-// import 'package:equatable/equatable.dart';
+import 'package:isar/isar.dart';
+part 'expense.g.dart';
 
-// import 'category.dart';
+@Collection()
+class Expense {
+  Id id = Isar.autoIncrement;
+  final String name;
+  final double amount;
+  final DateTime date;
 
-// class Expense extends Equatable {
-//   final String id;
-//   final String title;
-//   final double amount;
-//   final DateTime date;
-//   final Category category;
-
-//   const Expense({
-//     required this.id,
-//     required this.title,
-//     required this.amount,
-//     required this.date,
-//     required this.category,
-//   // });
+  Expense({
+    required this.name,
+    required this.amount,
+    required this.date,
+  });
+}

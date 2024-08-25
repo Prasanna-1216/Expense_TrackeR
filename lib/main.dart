@@ -1,13 +1,29 @@
+import 'package:expense_tracker/database/expense_database.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'login Signup/Screen/login.dart';
 
-void main() async{
+// void main() async{
+//   WidgetsFlutterBinding.ensureInitialized();
+
+//   await Firebase.initializeApp();
+//   runApp(const MyApp());
+// }
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  // initialize db
+  await ExpenseDatabase.initialize();
+
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ExpenseDatabase(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -17,8 +33,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       home: LoginScreen(),
-   
-      );
+    );
   }
 }
-

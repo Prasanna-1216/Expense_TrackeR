@@ -25,6 +25,7 @@ class _SignupScreenState extends State<LoginScreen> {
     emailController.dispose();
     passwordController.dispose();
   }
+
   // email and passowrd auth part
   void loginUser() async {
     setState(() {
@@ -52,6 +53,7 @@ class _SignupScreenState extends State<LoginScreen> {
       showSnackBar(context, res);
     }
   }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -75,7 +77,7 @@ class _SignupScreenState extends State<LoginScreen> {
                       hintText: "Enter your email",
                       icon: Icons.email),
                   TextFieldInpute(
-                    isPass: true,
+                      isPass: true,
                       textEditingController: passwordController,
                       hintText: "Enter your password",
                       icon: Icons.lock),
@@ -93,10 +95,7 @@ class _SignupScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  MyButton(
-                    onTab: loginUser,
-                    text: "Log In"
-                    ),
+                  MyButton(onTab: loginUser, text: "Log In"),
                   SizedBox(height: height / 15),
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -110,11 +109,11 @@ class _SignupScreenState extends State<LoginScreen> {
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const SignUpScreen(),
-                          ),
-                          );
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SignUpScreen(),
+                        ),
+                      );
                     },
                     child: const Text(
                       "SignUp",
