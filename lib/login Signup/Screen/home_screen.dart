@@ -1,15 +1,4 @@
-// import 'package:flutter/material.dart';
-
-// class HomeScreen extends StatelessWidget {
-//   const HomeScreen({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return const Scaffold();
-//   }
-// }
-
-import 'package:expense_tracker/login%20Signup/Screen/DashboardScreen.dart';
+import 'package:expense_tracker/login%20Signup/Screen/dashboard_screen.dart';
 import 'package:expense_tracker/login%20Signup/Screen/setting_screen.dart';
 import 'package:flutter/material.dart';
 
