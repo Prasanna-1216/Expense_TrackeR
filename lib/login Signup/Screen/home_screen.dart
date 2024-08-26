@@ -1,5 +1,6 @@
 import 'package:expense_tracker/login%20Signup/Screen/dashboard_screen.dart';
 import 'package:expense_tracker/login%20Signup/Screen/setting_screen.dart';
+import 'package:expense_tracker/login%20Signup/Screen/view_reports_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -89,7 +90,10 @@ class HomeScreen extends StatelessWidget {
           icon: Icons.bar_chart,
           label: 'View Reports',
           onPressed: () {
-            // Navigate to Reports screen
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const ViewReportsScreen()),
+            );
           },
         ),
         _buildQuickActionButton(
