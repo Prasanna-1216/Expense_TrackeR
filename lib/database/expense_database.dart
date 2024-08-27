@@ -20,7 +20,6 @@ class ExpenseDatabase extends ChangeNotifier {
 
   //Create - add a new expense
   Future<void> createNewExpense(Expense newExpense) async {
-    print(DateTime.now().toString() + "checkHere1231");
     await isar.writeTxn(() => isar.expenses.put(newExpense));
     //re-read from database
     readExpenses();
