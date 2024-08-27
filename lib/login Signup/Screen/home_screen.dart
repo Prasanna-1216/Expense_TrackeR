@@ -1,7 +1,9 @@
 import 'package:expense_tracker/login%20Signup/Screen/dashboard_screen.dart';
 import 'package:expense_tracker/login%20Signup/Screen/setting_screen.dart';
 import 'package:expense_tracker/login%20Signup/Screen/view_reports_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -42,26 +44,28 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget _buildProfileSection() {
-    return const Card(
+     final User? user = FirebaseAuth.instance.currentUser;
+    return Card(
       elevation: 4,
       child: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Row(
           children: [
             CircleAvatar(
               radius: 40,
-              backgroundImage:
-                  AssetImage('assets/profile.jpg'), // Add a profile image
+               backgroundImage: user?.photoURL != null
+                  ? NetworkImage(user!.photoURL!)
+                  : const AssetImage('images/profile1.jpg') as ImageProvider,
             ),
-            SizedBox(width: 20),
+            const SizedBox(width: 20),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'John Doe',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  user?.displayName ?? '',
+                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
-                Text('johndoe@example.com'),
+                Text(user?.email ?? 'No Email'),
               ],
             ),
           ],
